@@ -27,6 +27,7 @@ public class Ventana extends JFrame {
 		button.setText("Ejercicio1");
 		button.setBounds(184, 122, 134, 44);		
 		getContentPane().add(button);
+		button.addActionListener(new buttonEvent());
 		
 		JButton btnEjercicio = new JButton();
 		btnEjercicio.setText("Ejercicio2");
@@ -52,16 +53,18 @@ public class Ventana extends JFrame {
 
 class buttonEvent implements ActionListener 
 {
-	private JTextField txt1;
+	//private JTextField txt1;
 	
-	public buttonEvent(JTextField txt)
+	public buttonEvent()
 	{
-		txt1 = txt;
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("BUTTON PRESSED!!" + txt1.getText());
+		
+		Ventana1 M = new Ventana1();
+		M.Visibilidad(true);
 		
 	}
 	
