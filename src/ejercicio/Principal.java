@@ -1,6 +1,6 @@
-package Ejercicio;
+package ejercicio;
 
-import Ejercicio.Ventana;
+import ejercicio.Ventana;
 
 public class Principal {
 

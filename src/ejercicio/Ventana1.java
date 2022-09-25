@@ -1,4 +1,4 @@
-package Ejercicio;
+package ejercicio;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,6 +22,7 @@ public class Ventana1 extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JFormattedTextField textField_3;
+	private JLabel lblLosDatosIngresados;
 
 	/**
 	 * Launch the application.
@@ -72,8 +73,8 @@ public class Ventana1 extends JFrame {
 		lblNewLabel_1.setBounds(84, 118, 89, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		//Label para mostrar datos (arranca vacio)
-		JLabel lblLosDatosIngresados = new JLabel("");
+		//Label para mostrar datos (vacio)
+		lblLosDatosIngresados = new JLabel("");
 		lblLosDatosIngresados.setBounds(20, 236, 370, 14);
 		contentPane.add(lblLosDatosIngresados);
 		
@@ -103,60 +104,7 @@ public class Ventana1 extends JFrame {
 		
 		//Button Mostrar
 		JButton btnNewButton = new JButton("Mostrar datos");
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				boolean show = true;
-				
-				// check textField for only text - charcount - null
-				if(!textField.getText().matches("[a-zA-Z]+") || textField.getText().length() < 3 || textField.getText().isEmpty() )
-				{
-					textField.setBackground(Color.RED);
-					show = false;
-				}
-				else {textField.setBackground(Color.WHITE);}
-				
-				// check textField_1 for only text - charcount - null
-				if(!textField_1.getText().matches("[a-zA-Z]+") || textField_1.getText().length() < 3 || textField_1.getText().isEmpty() )
-				{
-					textField_1.setBackground(Color.RED);
-					show = false;
-				}
-				else {textField_1.setBackground(Color.WHITE);}
-				
-				// check textField_2 for only numbers - charcount - null
-				if(!textField_2.getText().matches("[0-9]+") || textField_2.getText().length() < 3 || textField_2.getText().isEmpty() )
-				{
-					textField_2.setBackground(Color.RED);
-					show = false;
-				}
-				else {textField_2.setBackground(Color.WHITE);}
-				
-				// check textField_2 for charcount - null
-				if(textField_3.getText().length() < 3 || textField_3.getText().isEmpty() )
-				{
-					textField_3.setBackground(Color.RED);
-					show = false;
-				}
-				else {textField_3.setBackground(Color.WHITE);}
-				
-				
-				if(show)
-				{
-					//Si todos los campos estan completos muestro resultado y los borro
-					lblLosDatosIngresados.setText("Los datos ingresados fueron: " + textField.getText() + " " + textField_1.getText() + " "  + textField_2.getText() + " "  + textField_3.getText() );
-					textField.setText("");
-					textField_1.setText("");
-					textField_2.setText("");
-					textField_3.setText("");
-					
-				}
-				
-				
-				
-			}
-		});
+		btnNewButton.addActionListener(new eventoBoton());
 		
 		btnNewButton.setBounds(237, 162, 130, 23);
 		contentPane.add(btnNewButton);
@@ -169,4 +117,64 @@ public class Ventana1 extends JFrame {
 		setVisible(estado);
 	}
 	
+	class eventoBoton implements ActionListener
+	{
+
+		
+		public void actionPerformed(ActionEvent e) {
+			boolean show = true;
+			
+			// check textField for only text - charcount - null
+			if(!textField.getText().matches("[a-zA-Z]+") || textField.getText().length() < 3 || textField.getText().isEmpty() )
+			{
+				textField.setBackground(Color.RED);
+				show = false;
+			}
+			else {textField.setBackground(Color.WHITE);}
+			
+			// check textField_1 for only text - charcount - null
+			if(!textField_1.getText().matches("[a-zA-Z]+") || textField_1.getText().length() < 3 || textField_1.getText().isEmpty() )
+			{
+				textField_1.setBackground(Color.RED);
+				show = false;
+			}
+			else {textField_1.setBackground(Color.WHITE);}
+			
+			// check textField_2 for only numbers - charcount - null
+			if(!textField_2.getText().matches("[0-9]+") || textField_2.getText().length() < 3 || textField_2.getText().isEmpty() )
+			{
+				textField_2.setBackground(Color.RED);
+				show = false;
+			}
+			else {textField_2.setBackground(Color.WHITE);}
+			
+			// check textField_2 for charcount - null
+			if(textField_3.getText().length() < 3 || textField_3.getText().isEmpty() )
+			{
+				textField_3.setBackground(Color.RED);
+				show = false;
+			}
+			else {textField_3.setBackground(Color.WHITE);}
+			
+			
+			if(show)
+			{
+				//Si todos los campos estan completos muestro resultado
+				lblLosDatosIngresados.setText("Los datos ingresados fueron: " + textField.getText() + " " + textField_1.getText() + " "  + textField_2.getText() + " "  + textField_3.getText() );
+				
+				//Vaciar campos
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				
+			}
+			
+		}
+		
+	}
+	
 }
+
+
+
