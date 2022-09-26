@@ -45,6 +45,7 @@ public class Ventana2 extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	JComboBox<String> comboBox;
 
 	/**
 	 * Launch the application.
@@ -135,7 +136,7 @@ public class Ventana2 extends JFrame {
 		textField_2.setBounds(171, 116, 86, 20);
 		contentPane.add(textField_2);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Aprobado", "Desaprobado"}));
 		comboBox.setBounds(171, 146, 86, 20);
 		comboBox.setSelectedIndex(-1);
@@ -233,8 +234,36 @@ public class Ventana2 extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			textField_3.setText("Hola!");
-			textField_4.setText("Hola!");
+			//Valida que todos los campos esten completos
+			if(textField.getText().matches("[0-9]+") && Integer.valueOf(textField.getText()) < 11 && textField_1.getText().matches("[0-9]+") && Integer.valueOf(textField_1.getText()) < 11 && textField_2.getText().matches("[0-9]+") && Integer.valueOf(textField_2.getText()) < 11 && comboBox.getSelectedIndex() >= 0)
+			{
+				textField_4.setText("Regular"); //Default
+				
+				//Mostrar promedio
+				double prom;
+				
+				prom = ((Double.valueOf(textField.getText()) + Double.valueOf(textField_1.getText()) + Double.valueOf(textField_2.getText()) ) / 3);
+				
+				String promedio = prom+"";
+				
+				textField_3.setText(promedio.substring(0,3));
+				
+				//Condicion
+				
+				if(Integer.valueOf(textField.getText()) < 6 || Integer.valueOf(textField_1.getText()) < 6 || Integer.valueOf(textField_2.getText()) < 6 || comboBox.getSelectedIndex() == 1 )
+				{
+					textField_4.setText("Libre");
+				}
+				else if(Integer.valueOf(textField.getText()) > 7 && Integer.valueOf(textField_1.getText()) > 7 && Integer.valueOf(textField_2.getText()) > 7 && comboBox.getSelectedIndex() == 0 )
+				{
+					textField_4.setText("Promocionado");
+				}
+				
+			}
+			
+			else {textField_4.setText(""); textField_3.setText("");}
+					
+			
 		}
 	}
 	
