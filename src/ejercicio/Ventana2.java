@@ -69,7 +69,7 @@ public class Ventana2 extends JFrame {
 	public Ventana2() {
 		setTitle("Promedio");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Cierra solo esta ventana con "x"
-		setBounds(100, 100, 418, 373);
+		setBounds(100, 100, 426, 379);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("hola");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

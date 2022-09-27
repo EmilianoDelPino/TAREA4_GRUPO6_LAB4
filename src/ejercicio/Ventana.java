@@ -19,7 +19,7 @@ public class Ventana extends JFrame {
 	public Ventana() 
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(400, 400, 500, 400);
+		setBounds(400, 150, 500, 400);
 		setTitle("Java App Escritorio");
 		getContentPane().setLayout(null);
 		
@@ -103,7 +103,7 @@ class button3Event implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		Ventana1 M = new Ventana1();
+		Ventana3 M = new Ventana3();
 		M.Visibilidad(true);
 		
 	}
